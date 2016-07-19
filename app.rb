@@ -46,11 +46,15 @@ end
 post("/questions") do
   description = params.fetch("description")
   survey_id = params.fetch("survey_id").to_i()
-  question = Question.create({:description => description, :survey_id => survey_id})
+  @question = Question.create({:description => description, :survey_id => survey_id})
   # @questions = Question.all()
   # @surveys = Survey.all()
   @survey = Survey.find(survey_id)
-  erb(:survey)
+  if @question.save()
+    erb(:survey)
+  else
+    erb(:error)
+  end
   # redirect("/surveys/" + survey_id.to_s())
 end
 
