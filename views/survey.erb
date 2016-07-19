@@ -1,0 +1,15 @@
+<h1> <%= @survey.name() %></h1>
+
+<% if @questions.any?() %>
+
+<ul>
+  <% @questions.each() do |question| %>
+    <li><a href="/questions/<%= question.id() %>"><%= question.name() %></a></li>
+  <% end %>
+</ul>
+
+<% else %>
+
+  <p>There are no questions in this survey</p>
+
+<% end %>
