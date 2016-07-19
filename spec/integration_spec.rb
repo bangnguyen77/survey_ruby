@@ -20,9 +20,21 @@ describe('adding a new survey', {:type => :feature}) do
   end
 
   it("adds a new question") do
-    visit('/surveys/:id')
-    fill_in('description', :with => "how are you?")
-    click_on('Add question')
+    visit('/')
+    fill_in('name', :with => "Epicodus SatisFaction")
+    click_on('Add Survey')
+    click_link("View Survey's Questions")
+    fill_in('Question Name', :with => "how are you?")
+    click_on('Add Question')
     expect(page).to have_content("How are you?")
+  end
+
+  it("deletes a questions")do
+    visit('/')
+    fill_in('name', :with => "Epicodus SatisFaction")
+    click_on('Add Survey')
+    click_link("View Survey's Questions")
+    click_on('Delete survey')
+    expect(page).to have_content("Welcome to Survey Creater")
   end
 end
