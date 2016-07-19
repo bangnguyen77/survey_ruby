@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  validates(:description, {:presence => true, :length => { :maximum => 150 }})
   belongs_to(:survey)
   before_save(:capitalize_description)
 

@@ -1,6 +1,10 @@
 require("spec_helper")
 
 describe("Question") do
+  it("ensures that length of description is at most 150 characters") do
+    question = Question.new({:description => "a".*(151)})
+    expect(question.save()).to(eq(false))
+  end
   describe('#survey') do
     it("tells the survey to which a question belongs") do
       test_survey = Survey.create({:name => "Satisfaction for Epicodus"})
