@@ -7,10 +7,13 @@ require('launchy')
 describe('adding a new survey', {:type => :feature}) do
   it('allows a user to add a survey') do
     visit('/')
-    click_on('Create new Survey')
-    fill_in('name', :with => "Epicodus Satisfaction")
-    click_button('Add Survey')
-    expect(page).to have_content('Epicodus Satisfaction')
+    fill_in('name', :with => "Epicodus SatisFaction")
+    click_on('Add Survey')
+    expect(page).to have_content('Epicodus satisfaction')
   end
-
+  it("allows a user to view the survey's questions") do
+    visit('/')
+    click_link("View Survey's Questions")
+    expect(page).to have_content("Epicodus satisfaction")
+  end
 end
