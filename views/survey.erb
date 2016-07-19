@@ -4,7 +4,7 @@
 
 <ul>
   <% @questions.each() do |question| %>
-    <li><a href="/questions/<%= question.id() %>"><%= question.name() %></a></li>
+    <li><a href="/questions/<%= question.id() %>"><%= question.description() %></a></li>
   <% end %>
 </ul>
 
@@ -13,3 +13,11 @@
   <p>There are no questions in this survey</p>
 
 <% end %>
+
+<form action="/questions/<%= @question.id() %>/add" method="post">
+  <input id="survey_id" name="survey_id" type="hidden" value="<%= @survey.id() %>">
+  <label for="description">Add a question:</label>
+  <input id="description" name="description" type="text">
+
+  <button type="submit">Add question</button>
+</form>
